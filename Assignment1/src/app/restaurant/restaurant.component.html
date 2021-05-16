@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="row">
+            <div class="column">
+                <h1>Restaurants List</h1>
+                <table>
+                    <tr>
+                        <td>ID</td>
+                        <td>RESTAURANT NAME</td>
+                        <td>LOCATION</td>
+                        <td>ACTIONS </td>
+                    </tr>
+                    <tr *ngFor="let res of restaurants; let id = index">
+                        <td >{{id}}</td>
+                        <td >{{res.name}}</td>
+                        <td>{{res.location}}</td>
+                        <td><button (click)="editRes(res)">Edit</button>
+                        <button (click)="deleteRes(res)">Delete</button></td>
+                    </tr>
+                </table>
+                <br>
+                <hr>
+                <h1>Add new Restaurant</h1>
+                <form #AddRes="ngForm" (ngSubmit)="addRes(AddRes.value)">
+                    <div>
+                        <label for="name">Name</label><br>
+                        <input type="text" name="name" id="name" ngModel required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="location">Location</label><br>
+                        <input type="text" name="location" id="location" ngModel required>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Add</button>
+                </form>
+                    
+            </div>
+            <ng-container *ngIf="show" class="column">
+                <h1>Edit the restaurant details</h1>
+                <form #editRes="ngForm" (ngSubmit)="updateRes(editRes.value,name)">
+                    <div>
+                        <label for="name">Name</label><br>
+                        <input type="text" name="name" id="name" [ngModel]="name" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="place">Location</label><br>
+                        <input type="text" name="location" id="location" [ngModel]="location" required>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Submit Data</button>
+                </form>
+            </ng-container>
+        </div>
+
+    </body>
+</html>

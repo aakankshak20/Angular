@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h1>Ad Registration Form</h1>
+  <div class="alert alert-danger" *ngIf="errormsg">
+  {{errormsg}}
+  </div>
+  <form #userForm="ngForm" *ngIf="!submit" (ngSubmit)='onSubmit()' novalidate>
+      <div class="form-group">
+          <label>Title</label>
+          <input type="text" required #title='ngModel' [class.is-invalid]="title.invalid && name.touched"
+          class="form-control" name="title" [(ngModel)]="userModel.title" >
+          <small class="text-danger" [class.d-none]="title.valid || title.untouched">Title is required</small> 
+      </div>
+
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" required #name='ngModel' [class.is-invalid]="name.invalid && name.touched"
+          class="form-control" name='name' [(ngModel)]="userModel.name">
+          <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+      </div>
+
+      <div class="form-group">
+          <label >Category</label>
+          <br>
+         <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)"
+         #topic='ngModel' [class.is-invalid]="topicHasError && topic.touched" class="custom-select"
+         name="topic" [(ngModel)]="userModel.topic">
+             <option value="default">Category</option>
+             <option *ngFor ='let topic of topics'>{{topic}}</option>
+         </select>
+         <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please select topic</small>
+      </div>
+       <div class="form-group">
+           <label>Description</label>
+            <textarea required #description='ngModel' 
+            class="form-control" name="description" [(ngModel)]="userModel.description"></textarea>
+       </div>
+
+      <button [disabled]="userForm.form.invalid || topicHasError" class="btn btn-primary"  type="submit" (click)="getadv()">Submit</button>
+  </form>
+</div>

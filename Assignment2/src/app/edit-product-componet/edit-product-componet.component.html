@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <div class="row">
+            <div class="column">
+                <h1>ADVERTISE LIST</h1>
+                <table>
+                    <tr>
+                        <td>No</td>
+                        <td>Title</td>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>Description</td>
+                        <td>Action</td>
+                    </tr>
+                    <tr *ngFor="let ad of adv; let no=index">
+                        <td>{{no}}</td>
+                        <td>{{ad.title}}</td>
+                        <td>{{ad.name}}</td>
+                        <td>{{ad.topic}}</td>
+                        <td>{{ad.description}}</td>
+                       <td><button (click)="gethome()">Cancel</button></td>
+                    </tr>
+                </table>
+            </div>
+            <ng-container class="column">
+                <h1>Update Adv</h1>
+                <form #editadv='ngForm' (ngSubmit)="updateAdv(editadv.value,name,topic,description)">
+                    <div>
+                        <label for="title">Title</label><br>
+                        <input type="text" name="title" id="title" [ngModel]="title" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" [ngModel]="name" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="topic">Category</label>
+                        <select name="topic" id="topic" [ngModel]="topic" required>
+                            <option value="default">Select Category</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="mobile">mobile</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" [ngModel]="description" required>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Update Details</button>
+                </form>
+            </ng-container>
+        </div>
+    </body>
+</html>

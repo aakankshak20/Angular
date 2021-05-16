@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <div class="row">
+            <div class="column">
+                <h1>Advertise List</h1>
+                <table>
+                    <tr>
+                        <td>No</td>
+                        <td>Title</td>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>Description</td>
+                        <td colspan="2">Actions</td>
+                    </tr>
+                    <tr *ngFor="let adv of Adv; let no=index"> 
+                        <td>{{no}}</td>
+                        <td>{{adv.title}}</td>
+                        <td>{{adv.name}}</td>
+                        <td>{{adv.topic}}</td>
+                        <td>{{adv.description}}</td>
+                        <td><button (click)='editadv()'>Edit</button></td>
+                        <td><button (click)="deleteadv(adv)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

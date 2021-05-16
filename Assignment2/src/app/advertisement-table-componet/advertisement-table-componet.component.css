@@ -1,0 +1,27 @@
+table,td{
+    border: 1px solid black;
+    font-size: 20px;
+}
+td,th{
+    text-align: center;
+    padding: 8px;
+}
+
+td button{
+    background-color: rgb(250, 178, 44);
+    margin: 5px;
+    font-size: large;
+    padding:6px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

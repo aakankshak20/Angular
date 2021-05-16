@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <h1>List of restaurants</h1>
+    <table style="margin: 0 auto;">
+        <tr>
+            <th>Id</th>
+            <th>Restaurant Name</th>
+            <th>Location</th>
+            <th>Look at the Menu</th>
+        </tr>
+        <tr *ngFor="let res of restaurants; let i = index">
+            <td>{{i}}</td>
+            <td> {{res.name}} </td>
+            <td> {{res.location}}</td>
+            <td><button (click)="showMenu(res.assignedMenu)">Select</button></td>
+        </tr>
+    </table>
+</div>

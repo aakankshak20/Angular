@@ -1,0 +1,22 @@
+table,td, th{
+    border: 1px solid black;
+    font-size: 20px;
+}
+td,th{
+    text-align: center;
+    padding: 8px;
+}
+
+td input{
+    background-color: rgb(250, 178, 44);
+    margin: 5px;
+    font-size: large;
+    padding:6px;
+}
+
+button{
+    background-color: rgb(250, 178, 44);
+    margin: 5px;
+    font-size: large;
+    padding:6px;
+}

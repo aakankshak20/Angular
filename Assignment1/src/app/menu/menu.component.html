@@ -1,0 +1,8 @@
+
+<h1>List of Menus</h1>
+<h3>Click on button to get more options</h3>
+<table>
+    <tr *ngFor="let menu of menus">
+        <td><button (click)="editMenu(menu)">{{menu}}</button></td>
+    </tr>
+</table>

@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="column">
+        <div>
+            <h1>Edit Menu</h1>
+            <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                <tr *ngFor="let items of menu; let i=index">
+                   <td>{{i}}</td>
+                   <td>{{items.item}}</td>
+                   <td>{{items.price}}</td>
+                   <td>
+                       <button (click)="editItem(items)" >Edit</button>
+                       <button (click)="deleteItem(items)">Delete</button>
+                   </td> 
+                </tr>
+            </table>
+        </div>
+        <br>
+        <hr>
+      
+        <form #addItem="ngForm" (ngSubmit)="add(addItem.value,name)" >
+            <h1>Add new item to Menu</h1>
+            <div class="form-group">
+                <label for="item">Item:  </label>
+                <input type="text" id="item" name="item" class="form-control" ngModel>
+            </div> <br>
+            <div class="form-group">
+                <label for="price">Price: </label>
+                <input type="text" id="price" name="price" class="form-control" ngModel>
+            </div> <br>
+            <button class="btn btn-primary">Add Item</button>
+        </form> 
+        <br>
+        <hr>
+        
+        <h1>Assign menu to Restaurant</h1>
+        <form #assign="ngForm" (ngSubmit)="assignMenu(assign.value,name)" >
+            <div class="form-group">
+                <label for="assign">Assign To: </label>
+                <select name="assign" id="assign" ngModel>
+                    <option disabled >Select Restaurant</option>
+                    <option *ngFor="let res of restaurants" >
+                        {{res.name}}
+                    </option>
+                </select>
+            </div> <br>
+            <button class="btn btn-primary">Assign Menu</button>
+        </form> 
+    </div>
+
+
+    
+    <div class="column">
+      
+        <form *ngIf="show" #editForm="ngForm" (ngSubmit)="update(editForm.value,item)" >
+            <h1>Update details</h1>
+            <div class="form-group">
+                <label for="item">Item: </label>
+                <input type="text" id="item" name="item" class="form-control" [ngModel]="item">
+            </div> <br>
+            <div class="form-group">
+                <label for="price">Price: </label>
+                <input type="text" id="price" name="price" class="form-control" [ngModel]="price">
+            </div> <br>
+            <button class="btn btn-primary">Update Item</button>
+        </form> 
+    </div>
+</div>
+
+
+
+
+ 
